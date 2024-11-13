@@ -1,3 +1,84 @@
 https://drive.google.com/file/d/18lMxVlODoIFC0Lw4jcQH-WKqLS3eS0YW/view
 
 os
+
+
+
+head /etc/passwd
+    3  cat /etc/passwd
+    4  head /etc/passwd
+    5  tail /etc/passwd
+    6  clear
+    7  head -n 2 /etc/passwd
+    8  tail -n 2 /etc/passwd
+    9  tree
+   10  sudo apt install tree
+   11  sudo apt update
+   12  sudo apt install tree
+   13  clear
+   14  tree
+   15  cd /
+   16  tree
+   17  clear
+   18  less /etc/passwd
+   19  ls -l
+   20  clear
+   21  cd ~
+   22  touch file
+   23  ls -l
+   24  ls -l /dev
+   25  clear
+   26  echo "hello" > original.txt
+   27  ls
+   28  cat original.txt
+   29  ln original.txt hardlink.txt
+   30  ls -l
+   31  cat hardlink.txt
+   32  echo "more text" >> hardlink.txt
+   33  cat original.txt
+   34  rm original.txt
+   35  ls -l
+   36  cat hardlink.txt
+   37  clear
+   38  echo "hello" > target.txt
+   39  ln -s target.txt symblic.txt
+   40  ls -l
+   41  cat symblic.txt
+   42  rm target.txt
+   43  ls -l
+   44  clear
+   45  cat /etc/passwd
+   46  clear
+   47  id
+   48  clear
+   49  sudo useradd alice
+   50  cat /etc/passwd
+   51  clear
+   52  sudo passwd alice
+   53  clear
+   54  sudo usermod -d /home/newalice alice
+   55  cat /etc/passwd
+   56  sudo usermod -s /bin/bash alice
+   57  cat /etc/passwd
+   58  clear
+   59  whoami
+   60  sudo su alice
+   61  whoami
+   62  sudo userdel alice
+   63  cat /etc/passwd
+   64  clear
+   65  cat /etc/group
+   66  clear
+   67  sudo groupadd batch40
+   68  cat /etc/group
+   69  clear
+   70  sudo usermod -aG batch40 ubuntu
+   71  cat /etc/group
+   72  clear
+   73  sudo gpasswd -d ubuntu batch40
+   74  cat /etc/group
+   75  sudo groupdel batch40
+   76  cat /etc/group
+   77  clear
+   78  ls -l
+   79  history
