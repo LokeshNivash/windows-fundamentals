@@ -82,3 +82,50 @@ head /etc/passwd
    77  clear
    78  ls -l
    79  history
+
+
+
+Exercise 1: Basic Commands
+Create a new directory called "my_directory".
+List the files in the current directory.
+Change into the "my_directory" directory.
+Create a new file called "my_file.txt".     
+Copy "my_file.txt" to a new directory called "backup".
+Remove the file "my_file.txt".
+ 
+Exercise 2: Files and Directories
+Create a new file called "my_notes.txt".
+Rename "my_notes.txt" to "new_notes.txt".
+Move "new_notes.txt" to the "backup" directory.
+Display the permissions of "backup" directory.
+Change the permissions of "backup" directory to read, write, and execute for the owner, and read-only for others.
+Display the ownership of "new_notes.txt
+Change the ownership of "new_notes.txt" to the user "john" and group "users".
+ 
+Exercise 3: Users and Groups
+Create a new user called "john".     
+Set a password for the user "john".     
+Add the user "john" to the "sudo" group.
+Switch to the user "john".
+View the information of the current user.     
+Delete the user "john".
+ 
+Exercise 4: Permissions
+Create a new file called "my_script.sh".
+Set the permissions of "my_script.sh" to read, write, and execute for the owner, and read-only for others.     
+Change the ownership of "my_script.sh" to the user "john" and group "users".
+Exercise 5: Storage
+Check the available disk space using free command
+Create a new partition using the "fdisk" command.  (Note: This step may require administrative privileges.)
+Format the partition with the ext4 file system.      (Note: This step may require administrative privileges.)
+Mount the partition to the "/mnt/my_partition" directory.
+Unmount the partition.
+Exercise 6: Archive and Compression
+Create a compressed archive of the "my_directory" directory.
+Extract the contents of "my_directory.tar.gz" to a new directory called "extracted".
+Create a zip archive of the "my_directory" directory.
+Extract the contents of "my_directory.zip" to a new directory called "extracted".
+Exercise 7: Swap Memory
+Check the current swap usage.
+Create a swap area with a size of 1GB.
+Enable the swap.
