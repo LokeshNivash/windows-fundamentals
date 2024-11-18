@@ -129,3 +129,46 @@ Exercise 7: Swap Memory
 Check the current swap usage.
 Create a swap area with a size of 1GB.
 Enable the swap.
+
+
+
+sudo apt update && sudo apt install lvm2 -y
+  231  clear
+  232  sudo pvcreate /dev/xvdz /dev/xvdy
+  233  sudo pvs
+  234  sudo pvdisplay
+  235  sudo pvscan
+  236  clear
+  237  sudo vgcreate myvg /dev/xvdy /dev/xvdz
+  238  sudo vgs
+  239  sudo vgdisplay
+  240  sudo vgdcan
+  241  sudo vgscan
+  242  clear
+  243  sudo lvcreate -L 10G -n mylv myvg
+  244  sudo lvs
+  245  sudo lvdisplay
+  246  sudo lvscan
+  247  clear
+  248  sudo mkfs.ext4 /dev/myvg/mylv
+  249  sudo mkdir /mnt/mylvm
+  250  sudo mount /dev/myvg/mylv /mnt/mylvm
+  251  lsblk
+  252  df -h
+  253  clear
+  254  sudo lvextend -L +5G /dev/myvg/mylv
+  255  sudo resize2fs /dev/myvg/mylv
+  256  df -h
+  257  lsblk
+  258  clear
+  259  sudo lvshrink --help
+  260  sudo lvresize --help
+  261  clear
+  262  sudo lvresize -L -5G /dev/myvg/mylv
+  263  lsblk
+  264  sydo umount /mnt/mylvm
+  265  sudo umount /mnt/mylvm
+  266  sudo lvremove /dev/myvg/mylv
+  267  sudo vgremove /dev/myvg/
+  268  sudo vgremove /dev/myvg
+  269  sudo pvremove
