@@ -189,3 +189,49 @@ sudo vi index.html
 </html>
 save and exit
 curl localhost
+
+
+
+Part 1: iptables Exercises
+Task 1: Install and configure iptables
+Install iptables if it is not already installed:
+sudo apt install iptables -y  # For Debian/Ubuntu
+sudo yum install iptables-services -y  # For RHEL/CentOS
+Verify the installation:
+iptables -V
+Task 2: Basic Rules with iptables
+Allow incoming SSH connections on port 22:
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+Allow HTTP (port 80) and HTTPS (port 443) traffic:
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+Block a specific IP address, e.g., 192.168.1.100:
+sudo iptables -A INPUT -s 192.168.1.100 -j DROP
+Task 3: View Rules
+List all the active rules:
+sudo iptables -L -v
+Task 4: Advanced Rules
+Allow traffic only from a specific network, e.g., 192.168.1.0/24:
+sudo iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
+Part 2: firewalld Exercises
+Task 1: Install and Enable firewalld
+Install firewalld:
+sudo yum install firewalld -y  # For RHEL/CentOS
+sudo apt install firewalld -y  # For Debian/Ubuntu
+Start and enable the service:
+sudo systemctl start firewalld
+sudo systemctl enable firewalld
+Task 2: Basic Commands
+Check the status of firewalld:
+sudo firewall-cmd --state
+Task 3: Adding Rules with firewalld
+Allow HTTP and HTTPS services:
+sudo firewall-cmd --add-service=http --permanent
+sudo firewall-cmd --add-service=https --permanent
+sudo firewall-cmd --reload
+Block incoming traffic from a specific IP, e.g., 192.168.1.100:
+sudo firewall-cmd --add-rich-rule='rule family="ipv4" source address="192.168.1.100" reject' --permanent
+sudo firewall-cmd --reload
+Open a custom port, e.g., 8080:
+sudo firewall-cmd --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
