@@ -1,0 +1,843 @@
+
+ Exercise 1: Basic Commands 
+1. Create a new directory called "my_directory". Answer: mkdir my_directory 
+2. List the files in the current directory. Answer: ls 
+3. Change into the "my_directory" directory. Answer: cd my_directory 
+4. Create a new file called "my_file.txt". Answer: touch my_file.txt 
+5. Copy "my_file.txt" to a new directory called "backup". Answer: cp my_file.txt backup/ 
+6. Remove the file "my_file.txt". Answer: rm my_file.txt 
+7. Find all files with the ".txt" extension in the current directory and its subdirectories. Answer: find . -name "*.txt" 
+
+Exercise 2: Files and Directories 
+1. Create a new file called "my_notes.txt". Answer: touch my_notes.txt 
+2. Rename "my_notes.txt" to "new_notes.txt". Answer: mv my_notes.txt new_notes.txt 
+3. Move "new_notes.txt" to the "backup" directory. Answer: mv new_notes.txt backup/ 
+4. Display the permissions of "backup" directory. Answer: ls -l backup 
+5. Change the permissions of "backup" directory to read, write, and execute for the owner, and read-only for others. Answer: chmod 755 backup 
+6. Display the ownership of "new_notes.txt". Answer: ls -l new_notes.txt 
+7. Change the ownership of "new_notes.txt" to the user "john" and group "users". Answer: chown john:users new_notes.txt 
+
+Exercise 3: Users and Groups 
+1. Create a new user called "john". Answer: sudo useradd john 
+2. Set a password for the user "john". Answer: sudo passwd john 
+3. Add the user "john" to the "sudo" group. Answer: sudo usermod -aG sudo john 
+4. Switch to the user "john". Answer: su john 
+5. View the information of the current user. Answer: id 
+6. Delete the user "john". Answer: sudo userdel john 
+
+Exercise 4: Permissions 
+1. Create a new file called "my_script.sh". Answer: touch my_script.sh 
+2. Set the permissions of "my_script.sh" to read, write, and execute for the owner, and read-only for others. Answer: chmod 755 my_script.sh 
+3. Change the ownership of "my_script.sh" to the user "john" and group "users". Answer: chown john:users my_script.sh 
+
+Exercise 5: Storage 
+
+1. Check the available disk space. Answer: df -h 
+2. Create a new partition using the "fdisk" command. Answer: (Note: This step may require administrative privileges.) 
+3. Format the partition with the ext4 file system. Answer: (Note: This step may require administrative privileges.) 
+4. Mount the partition to the "/mnt/my_partition" directory. Answer: sudo mount /dev/sdX1 /mnt/my_partition (replace "sdX1" with the appropriate partition identifier) 
+5. Unmount the partition. Answer: sudo umount /mnt/my_partition 
+
+Exercise 6: Archive and Compression 
+1. Create a compressed archive of the "my_directory" directory. Answer: tar -czvf my_directory.tar.gz my_directory 
+2. Extract the contents of "my_directory.tar.gz" to a new directory called "extracted". Answer: tar -xzvf my_directory.tar.gz -C extracted 
+3. Create a zip archive of the "my_directory" directory. Answer: zip -r my_directory.zip my_directory 
+4. Extract the contents of "my_directory.zip" to a new directory called "extracted". Answer: unzip my_directory.zip -d extracted 
+
+Exercise 7: Swap Memory 
+1. Check the current swap usage. Answer: swapon --show 
+2. Create a swap file with a size of 1GB. Answer: sudo fallocate -l 1G /swapfile 
+3. Set permissions for the swap file. Answer: sudo chmod 600 /swapfile 
+4. Enable the swap file. Answer: sudo mkswap /swapfile && sudo swapon /swapfile 
+5. Disable the swap file. Answer: sudo swapoff /swapfile 
+
+Exercise 8: Process Management 
+1. List all running processes. Answer: ps aux 
+2. Find the process ID (PID) of the process named "nginx". Answer: pgrep nginx 
+3. Display detailed information about the process with PID 1234. Answer: ps -p 1234 -f 
+4. Terminate the process with PID 1234. Answer: kill 1234 
+
+Exercise 9: Services 
+1. Start the Apache web server service. Answer: sudo systemctl start apache2 
+2. Check the status of the Apache service. Answer: systemctl status apache2 
+3. Enable the Apache service to start on boot. Answer: sudo systemctl enable apache2 
+4. Stop the Apache service. Answer: sudo systemctl stop apache2 
+
+Exercise 10: Logging 
+1. Display the last 10 lines of the system log. Answer: tail -n 10 /var/log/syslog 
+2. Filter the system log to show only messages containing the word "error". Answer: grep "error" /var/log/syslog 
+3. Display the log entries related to the SSH service. Answer: journalctl -u sshd 
+4. Monitor the system log in real-time. Answer: tail -f /var/log/syslog 
+
+Exercise 11: at Command 
+1. Schedule a command to run at a specific time, for example, running a script named "backup.sh" at 9:00 PM. Answer: at 9:00 PM at> /path/to/backup.sh at> Ctrl+D 
+2. View the list of scheduled at jobs. Answer: atq 
+3. Remove a scheduled at job with job ID 1. Answer: atrm 1 
+
+Exercise 12: crontab Command 
+1. Edit the crontab file to schedule a task to run every day at 2:00 AM, executing the script "cleanup.sh". Answer: crontab -e 0 2 * * * /path/to/cleanup.sh 
+2. List the contents of the current user's crontab. Answer: crontab -l 
+3. Remove all scheduled tasks from the crontab. Answer: crontab -r 
+
+Exercise 13: Package Manager 
+1. Update the package lists and upgrade installed packages. Answer: sudo apt update && sudo apt upgrade 
+2. Install the "htop" package using the package manager. Answer: sudo apt install htop 
+3. Search for a package containing the keyword "nginx". Answer: apt search nginx 
+4. Remove the "htop" package. Answer: sudo apt remove htop 
+
+Exercise 14: Networking 
+1. Display the IP address and network interface information. Answer: ip addr 
+2. Ping the IP address 8.8.8.8 to check network connectivity. Answer: ping 8.8.8.8 
+3. View the routing table. Answer: ip route 
+4. Retrieve the DNS information for a domain, e.g., "example.com". Answer: nslookup example.com 
+
+Exercise 15: DNS 
+1. Edit the DNS resolver configuration file to add a custom DNS server. Answer: sudo nano /etc/resolv.conf 
+2. Flush the DNS cache to apply the changes. Answer: sudo systemctl restart systemd-resolved 
+3. Test DNS resolution for a domain, e.g., "google.com". Answer: ping google.com 
+
+Exercise 16: Firewall 
+1. Check the status of the firewall. Answer: sudo ufw status 
+2. Allow incoming traffic on port 80 (HTTP). Answer: sudo ufw allow 80 
+3. Deny incoming traffic on port 22 (SSH). Answer: sudo ufw deny 22 
+4. Enable the firewall. Answer: sudo ufw enable 
+
+Exercise 17: LVM (Logical Volume Manager) 
+1. List available physical volumes. Answer: sudo pvdisplay 
+2. Create a new physical volume on a device, e.g., /dev/sdb. Answer: sudo pvcreate /dev/sdb 
+3. Create a volume group named "myvg" using the new physical volume. Answer: sudo vgcreate myvg /dev/sdb 
+4. Create a logical volume named "mylv" with a size of 1GB. Answer: sudo lvcreate -L 1G -n mylv myvg 
+
+Exercise 18: SSH Authentication 
+1. Generate an SSH key pair on your local machine. Answer: ssh-keygen 
+2. Copy the public key to a remote server. Answer: ssh-copy-id username@remote-server 
+3. Disable password-based authentication on the SSH server. Answer: Edit the SSH server configuration file, typically located at /etc/ssh/sshd_config, and set PasswordAuthentication to no. Restart the SSH service afterward. 
+
+Exercise 19: SCP (Secure Copy) 
+1. Copy a local file to a remote server using SCP. Answer: scp local-file.txt username@remote-server:/path/to/destination 
+2. Copy a file from a remote server to your local machine using SCP. Answer: scp username@remote-server:/path/to/file remote-file.txt 
+
+Note: Some exercises, such as partitioning and formatting, may require administrative privileges, so please exercise caution and consult the appropriate documentation before performing such tasks on your system.
+Foreground Processes
+1.	Run a command in the foreground:
+Open a terminal and execute a long-running command like ping google.com. Observe its behavior and how it blocks the terminal.
+2.	Interrupt the process:
+Press Ctrl+C to stop the command. Note the result.
+________________________________________
+Background Processes
+1.	Start a process in the background:
+Run sleep 300 & and note the process ID returned.
+2.	Observe the shell prompt behavior:
+Execute other commands while the background process runs.
+3.	Bring the process to the foreground:
+Use fg to bring the sleep process to the foreground. Stop it with Ctrl+C.
+________________________________________
+Listing Running Processes
+1.	List all processes:
+Use ps aux to view all running processes.
+2.	Dynamic listing:
+Use the top or htop command to monitor real-time processes.
+________________________________________
+Stopping Processes
+1.	Stop a process by name:
+Use killall <process_name> to stop a running process (e.g., killall sleep).
+2.	Stop a process by PID:
+Find the process ID using ps and stop it using kill <PID>.
+________________________________________
+Parent and Child Processes
+1.	Observe process hierarchy:
+Run pstree 
+________________________________________
+The top Command
+1.	Run the top command:
+Execute top and understand the information displayed: CPU, memory usage, and process details.
+2.	Sort processes:
+While in top, press P to sort by CPU usage and M to sort by memory usage.
+3.	Terminate a process:
+Find a process in top and terminate it by pressing k and entering its PID.
+________________________________________
+at Command
+The at command is used for scheduling one-time tasks.
+1. Schedule a Simple Task
+•	Run:
+echo "echo 'Hello, World!' > ~/hello.txt" | at now + 1 minute
+•	Verify:
+o	Check the content of ~/hello.txt after 1 minute to confirm the task ran.
+2. List Scheduled Tasks
+•	Use:
+atq
+•	Observe the list of scheduled tasks.
+3. Remove a Scheduled Task
+•	Schedule a task and remove it before execution:
+echo "echo 'This will not execute' > ~/test.txt" | at now + 5 minutes
+atq
+atrm <job_number>
+•	Confirm:
+o	Check atq to ensure the task is removed.
+cron Command
+The cron daemon is used for repetitive tasks based on time intervals.
+5. Edit the Crontab
+•	Open the crontab editor:
+crontab -e
+•	Add an entry to schedule a task every minute:
+* * * * * echo "Cron task executed at $(date)" >> ~/cron_log.txt
+•	Verify:
+o	Check ~/cron_log.txt after a few minutes to ensure the task runs.
+6. List Current Crontab Entries
+•	Use:
+crontab -l
+•	Observe the active cron jobs.
+7. Schedule a Daily Task
+•	Add a crontab entry to run a script daily at 8:00 AM:
+0 8 * * * ~/my_script.sh
+•	Verify:
+o	Wait for the next execution or manually adjust the time for testing.
+________________________________________
+Part 1: iptables Exercises
+Task 1: Install and configure iptables
+1.	Install iptables if it is not already installed:
+sudo apt install iptables -y  # For Debian/Ubuntu
+sudo yum install iptables-services -y  # For RHEL/CentOS
+2.	Verify the installation:
+iptables -V
+________________________________________
+Task 2: Basic Rules with iptables
+1.	Allow incoming SSH connections on port 22:
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+2.	Allow HTTP (port 80) and HTTPS (port 443) traffic:
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+3.	Block a specific IP address, e.g., 192.168.1.100:
+sudo iptables -A INPUT -s 192.168.1.100 -j DROP
+________________________________________
+Task 3: View Rules
+1.	List all the active rules:
+sudo iptables -L -v
+________________________________________
+Task 4: Advanced Rules
+1.	Allow traffic only from a specific network, e.g., 192.168.1.0/24:
+sudo iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
+________________________________________
+Part 2: firewalld Exercises
+Task 1: Install and Enable firewalld
+1.	Install firewalld:
+sudo yum install firewalld -y  # For RHEL/CentOS
+sudo apt install firewalld -y  # For Debian/Ubuntu
+2.	Start and enable the service:
+sudo systemctl start firewalld
+sudo systemctl enable firewalld
+________________________________________
+Task 2: Basic Commands
+1.	Check the status of firewalld:
+sudo firewall-cmd --state
+________________________________________
+Task 3: Adding Rules with firewalld
+1.	Allow HTTP and HTTPS services:
+sudo firewall-cmd --add-service=http --permanent
+sudo firewall-cmd --add-service=https --permanent
+sudo firewall-cmd --reload
+2.	Block incoming traffic from a specific IP, e.g., 192.168.1.100:
+sudo firewall-cmd --add-rich-rule='rule family="ipv4" source address="192.168.1.100" reject' --permanent
+sudo firewall-cmd --reload
+3.	Open a custom port, e.g., 8080:
+sudo firewall-cmd --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
+apt install apache2
+sudo systemctl status apache2
+sudo systemctl start apache2
+cd /var/www/html
+sudo rm -f index.html
+sudo vi index.html
+<html>
+<body>
+<h1> hello world </h1>
+</body>
+</html>
+save and exit
+curl localhost
+sudo yum update
+yum search nginx
+sudo yum install vim
+sudo yum install vim-8.2.0001-1.el8.x86_64
+sudo yum remove vim
+yum list installed
+yum info vim
+sudo yum upgrade
+sudo apt-get update
+sudo apt-get upgrade
+apt-get search nginx
+sudo apt-get install vim
+sudo apt-get install vim=2:8.1.2269-1ubuntu5
+sudo apt-get remove vim
+sudo apt-get purge vim
+apt-get list --installed
+apt-get show vim
+sudo apt update
+sudo apt list --upgradable
+sudo apt search curl
+sudo apt show curl
+sudo apt install curl
+sudo apt install wget
+sudo apt install apache2
+sudo apt install mysql
+sudo apt install telnet
+sudo apt remove curl
+sudo apt install curl
+sudo apt purge curl
+sudo apt install curl
+sudo apt upgrade
+sudo apt --help
+curl localhost
+sudo echo "hello" > index.html
+apt-get –help
+
+journalctl
+journalctl -u apache2
+journalctl -b
+journalctl -f
+journalctl –help
+ps -aux
+ps -aux | grep ubuntu
+ps -aux | grep apache2
+sleep 2000 &
+ps
+kill 1180
+ps
+top
+htop
+systemctl status apache2
+sudo apt update
+sudo apt install apache2
+sudo systemctl start apache2
+sudo systemctl status apache2
+sudo systemctl stop apache2
+sudo systemctl status apache2
+sudo systemctl restart apache2
+sudo systemctl status apache2
+sudo systemctl enable apache2
+sudo systemctl disable apache2
+sleep 2000
+ sleep 2000 &
+ fg %1
+ bg %1
+
+sudo apt update && sudo apt install lvm2 -y
+clear
+sudo pvcreate /dev/xvdz /dev/xvdy
+sudo pvs
+sudo pvdisplay
+sudo pvscan
+clear
+sudo vgcreate myvg /dev/xvdy /dev/xvdz
+sudo vgs
+sudo vgdisplay
+sudo vgscan
+clear
+sudo lvcreate -L 10G -n mylv myvg
+sudo lvs
+sudo lvdisplay
+sudo lvscan
+clear
+sudo mkfs.ext4 /dev/myvg/mylv
+sudo mkdir /mnt/mylvm
+sudo mount /dev/myvg/mylv /mnt/mylvm
+lsblk
+df -h
+clear
+sudo lvextend -L +5G /dev/myvg/mylv
+sudo resize2fs /dev/myvg/mylv
+df -h
+lsblk
+clear
+sudo lvshrink --help
+sudo lvresize --help
+clear
+sudo lvresize -L -5G /dev/myvg/mylv
+lsblk
+sudo umount /mnt/mylvm
+sudo lvremove /dev/myvg/mylv
+sudo vgremove /dev/myvg/
+sudo vgremove /dev/myvg
+sudo pvremove
+
+User Management and Permissions
+sudo useradd user1
+sudo useradd user2
+cat /etc/passwd
+passwd user1
+useradd user3
+sudo passwd user1
+sudo passwd user2
+clear
+sudo groupadd devgroup
+sudo usermod -aG devgroup user1
+sudo usermod -aG devgroup user2
+cat /etc/group
+clear
+su user1
+clear
+echo "hello" > file1.txt
+ls -l
+sudo chmod 740 file1.txt
+ls -l
+sudo chmod u+rw,g+rw,o+r file1.txt
+ls -l
+clear
+ls -l
+chown user1 file1.txt
+sudo chown user1 file1.txt
+ls -l
+
+sudo chgrp devgroup file1.txt
+ls -l
+sudo chown ubuntu:ubuntu file1.txt
+ls -l
+history
+
+Disk Partitioning and Mounting
+sudo fdisk /dev/xvdz
+lsblk
+clear
+sudo mkfs.ext4 /dev/xvdz4
+sudo mkdir data
+sudo mount /dev/xvdz4 data
+clear
+lsblk
+df -h
+clear
+sudo echo '/dev/xvdz4 /home/ubuntu/data ext4 defaults 0 2' | sudo tee -a /etc/fstab
+cat /etc/fstab
+
+Swap Space Management
+sudo fdisk /dev/xvdz
+lsblk
+clear
+sudo mkfs.ext4 /dev/xvdz4
+sudo mkdir data
+sudo mount /dev/xvdz4 data
+clear
+lsblk
+df -h
+clear
+sudo echo '/dev/xvdz4 /home/ubuntu/data ext4 defaults 0 2' | sudo tee -a /etc/fstab
+cat /etc/fstab
+clear
+lsblk
+sudo fdisk /dev/xvdz
+lsblk
+mkswap /dev/xvdz1
+sudo mkswap /dev/xvdz1
+enable swapon
+swapon
+lsblk
+swapon -s
+swapon /dev/xvdz1
+sudo swapon /dev/xvdz1
+swapon -s
+lsblk
+
+
+mkdir demofile && cd demofile
+echo "this is file1" > file1
+echo "this is file2" > file2
+echo "this is file3" > file3
+cd ..
+tar -cvf demofile.tar demofile/
+ls -l demofile.tar
+cd demofile/
+tar --help
+tar -tvf demofile.tar
+tar -xf demofile.tar
+ls
+gzip demofile.tar
+ls -l
+gunzip demofile.tar.gz
+ls -l
+bzip2 demofile.tar
+sudo apt install bzip2
+clear
+ls
+bzip2 demofile.tar
+ls -l
+bzip2 --help
+bzip2 -d demofile.tar
+bzip2 -d demofile.tar.bz2
+ls -l
+clear
+ls
+cd /demo
+ls
+cd demofile
+ls
+cd ..
+zip -r demofile.zip demofile/
+sudo apt install zip
+zip -r demofile.zip demofile/
+ls -l
+
+
+head /etc/passwd
+cat /etc/passwd
+head /etc/passwd
+tail /etc/passwd
+clear
+head -n 2 /etc/passwd
+tail -n 2 /etc/passwd
+tree
+sudo apt install tree
+sudo apt update
+sudo apt install tree
+clear
+tree
+cd /
+tree
+clear
+less /etc/passwd
+ls -l
+clear
+cd ~
+touch file
+ls -l
+ls -l /dev
+clear
+echo "hello" > original.txt
+ls
+cat original.txt
+ln original.txt hardlink.txt
+ls -l
+cat hardlink.txt
+echo "more text" >> hardlink.txt
+cat original.txt
+rm original.txt
+ls -l
+cat hardlink.txt
+clear
+echo "hello" > target.txt
+ln -s target.txt symblic.txt
+ls -l
+cat symblic.txt
+rm target.txt
+ls -l
+clear
+cat /etc/passwd
+clear
+id
+clear
+sudo useradd alice
+cat /etc/passwd
+clear
+sudo passwd alice
+clear
+sudo usermod -d /home/newalice alice
+cat /etc/passwd
+sudo usermod -s /bin/bash alice
+cat /etc/passwd
+clear
+whoami
+sudo su alice
+whoami
+sudo userdel alice
+cat /etc/passwd
+clear
+cat /etc/group
+clear
+sudo groupadd batch40
+cat /etc/group
+clear
+sudo usermod -aG batch40 ubuntu
+cat /etc/group
+clear
+sudo gpasswd -d ubuntu batch40
+cat /etc/group
+sudo groupdel batch40
+cat /etc/group
+clear
+ls -l
+history
+
+mkdir batch40
+ls
+pwd
+cd batch40
+pwd
+cd ..
+pwd
+ls
+ls -l
+ls -a
+clear
+touch file1
+ls
+cat file1
+echo "hello" > file1
+cat file
+cat file1
+echo "hello world" > file1
+cat file1
+clear
+cat file1
+echo "bye world" >> file1
+cat file1
+clear
+pwd
+ls
+ls /batch40
+ls /root/batch40
+cp file1 /root/batch40/filedemo
+ls
+ls /root/batch40
+cat filedemo
+cat /root/batch40/filedemo
+clear
+pwd
+ls
+ls /root/batch40
+mv file1 /root/batch40/
+ls
+ls /root/batch40
+rmdir /root/batch40
+rm -rf /root/batch40
+ls
+pwd
+clear
+mkdir demo
+rmdir demo
+touch test.txt
+ls
+rm test.txt
+ls
+whoami
+man ls
+ls --help
+clear
+date
+history
+
+1. Create a directory named ProjectX and within it, create subdirectories named docs, backup, src, and data.
+ 
+2. Move to the src directory.
+ 
+3. Create an empty file named report.txt in the docs directory.
+ 
+4. Verify that the file has been created.
+ 
+5. Add the text Hello, World! to a file named greeting.txt.
+ 
+6. Append Have a great day! to the same file.
+ 
+7. Redirect the output of the echo Welcome! command to a file named welcome.log.
+ 
+8. View the contents of welcome.log to confirm the echoed message.
+ 
+9. Print the full path to the current working directory.
+ 
+10. Move back to the src directory inside ProjectX.
+ 
+11. Create a new user named testuser on your system.
+ 
+12. Create a new group named developers
+ 
+13. Assign testuser to the developers group.
+ 
+14. Create a new user named olduser on your system.
+Remove a user named olduser from your system, ensuring that their home directory is also deleted.
+ 
+15. Confirm that the user olduser has been successfully removed.
+ 
+16. Create a file named datafile.txt in data directory.
+Set the file permissions of datafile.txt so that the owner can read and write, and the group can read, but others cannot.
+ 
+17. Verify the permissions of datafile.txt using ls -l.
+ 
+18. List all the running processes on your system and add them to a file called as ps.txt.
+ 
+19. Grant read and write permissions to a file named datafile.txt for the owner and the group but deny any access to others.
+Verify the permissions of datafile.txt using ls -l.
+ 
+20. Create a file named  important.txt in docs directory.
+Copy this file to a new directory named backup using an absolute path.
+ 
+21. You have a file named datafile.txt in the data directory. Move this file to the docs directory using an absolute path.
+
+Systemctl
+Note: Perform all the commands as a root user -> sudo su
+Installation – RHEL 9 -> sudo yum install httpd (or) sudo dnf install httpd
+Installation – Ubuntu -> sudo apt update -> sudo apt install apache2
+Apache2 (HTTP Server) – Ubuntu OS
+•	Check Apache2 service status: sudo systemctl status apache2
+•	Start Apache2 service: sudo systemctl start apache2
+•	Stop Apache2 service: sudo systemctl stop apache2
+•	Restart Apache2 service: sudo systemctl restart apache2
+•	Enable Apache2 to start on boot: sudo systemctl enable apache2
+•	Disable Apache2 from starting on boot: sudo systemctl disable apache2
+
+MySQL Server 
+Installation – RHEL 9 -> sudo yum install mysql-server (or) sudo dnf install mysql-server 
+Installation – Ubuntu -> sudo apt update -> sudo apt install mysql-server
+•	Check MySQL service status: sudo systemctl status mysql
+•	Start MySQL service: sudo systemctl start mysql
+•	Stop MySQL service: sudo systemctl stop mysql
+•	Restart MySQL service: sudo systemctl restart mysql
+•	Enable MySQL to start on boot: sudo systemctl enable mysql
+•	Disable MySQL from starting on boot: sudo systemctl disable mysql
+
+You can try out installation and systemctl commands on other services such as nginx (Web server), mariadb-server (Web Server). 
+
+Journalctl 
+To display all system logs: journalctl
+To show logs related to a particular service, for instance, Apache: journalctl -u apache2
+To view logs within a specific time range (e.g., for the last hour): journalctl --since "1 hour ago"
+To show logs from the current boot: journalctl -b
+To continuously monitor logs in real time (similar to tail -f): journalctl -f
+journalctl --since "2023-01-01" --until "2023-01-02" -u sshd  
+Check for Service Start/Stop Events:
+Look for any anomalies during Apache service start or stop events that might indicate underlying issues:
+      journalctl -u apache2 | grep "started"    # Check service start events
+journalctl -u apache2 | grep "stopped"    # Check service stop events
+journalctl -u apache2 --since "1 hour ago" 
+
+Note: Execute the above commands on the ubuntu machine. 
+
+Task Scheduling 
+Scenario 1: Automated Backup Every Sunday
+You want to back up your database every Sunday at 2 AM.
+0 2 * * 0 /path/to/backup_script.sh
+
+Scenario 2: Regular Log Cleanup
+To clean up logs every day at midnight:
+0 0 * * * /path/to/log_cleanup_script.sh
+
+Scenario 3: System Health Check Every Hour
+To run a health check script every hour:
+0 * * * * /path/to/health_check_script.sh
+
+Note : Along with the Labs for Crontab you will find 3 more examples before the lab in the PDF. 
+
+Scenario 4: Run a backup script at 2AM everyday
+# Create source directory and add files
+mkdir -p /home/ubuntu/sourcedir
+echo "File 1 content" > /home/ubuntu/sourcedir/file1.txt
+echo "File 2 content" > /home/ubuntu/sourcedir/file2.txt
+# Create destination directory
+mkdir -p /home/ubuntu/backupdir
+
+vi backup_script.sh
+press 'i' to enter text
+copy paste the below contents
+
+#!/bin/bash
+# Backup script - backup_script.sh
+
+# Source and destination paths
+source_dir="/home/ubuntu/sourcedir"
+dest_dir="/home/ubuntu/backupdir"
+
+# Copy files from source to destination
+cp -R "$source_dir"/* "$dest_dir"
+Save and Exit: Click esc+:wq!
+Make the Script executable: chmod +x backup_script.sh
+crontab -e
+0 2 * * * /home/ubuntu/backup_script.sh
+crontab -l 
+
+Scenario 5: 
+mkdir /home/ubuntu/test_directory
+echo "Hello, this is a test file" > /home/ubuntu/test_directory/test_file.txt
+
+Create a simple cron job that appends a timestamp to the file every minute.
+Crontab -e 
+* * * * * echo "$(date) >> /home/ubuntu/test_directory/test_file.txt"
+This cron job runs every minute (* * * * *), executing the command echo
+
+Verify the output:
+cat /home/ubuntu/test_directory/test_file.txt
+You should see new timestamps being appended to the file every minute, indicating that the cron job is working.
+
+At command
+Scenario 1: Schedule Software Update at a Specific Time
+Suppose you want to update software tomorrow at 3 PM: at 3:00 PM tomorrow
+apt update 
+Save and exit: ctrl + d
+
+Scenario 2: Scheduled Server Restart
+Schedule a server restart at a specific date and time:
+at 4:00 AM July 15
+systemctl restart apache2 
+Save and exit: ctrl + d
+
+Scenario 3: Schedule directory creation
+at now
+mkdir atdemo
+
+Yum package manager
+Works on RHEL, CentOS, Fedora Machines
+yum install nginx
+yum update
+yum remove mariadb-server
+yum search python3
+yum search python3
+
+Apt Package Manager
+Works on Ubuntu
+sudo apt install mariadb-server
+sudo apt update
+sudo apt upgrade
+sudo apt remove vim	
+apt-cache search nodejs
+
+RPM – Works on Amazon Linux, Centos, Fedora 
+Note: You can create a new VM and set the OS as Amazon Linux and try the below commands
+sudo rpm -i htop.rpm wget.rpm
+List all installed packages:
+rpm -qa
+Remove a package:
+rpm -e wget.rpm
+
+Note: Perform all the commands as a root user -> sudo su
+Linux Mini Project: System Administration and Operations
+Objective:
+Explore and demonstrate Linux administration concepts through hands-on tasks. This project covers user and group management, permissions, ownership, processes, services, package management, networking, storage, monitoring, logging, job scheduling, and text editing.
+________________________________________
+Project Tasks
+1. User and Group Management
+•	Task: Create two users: user1 and user2.
+•	Add both users to a group named project_team.
+•	Verify group membership using the id command.
+2. Permissions and Ownership
+•	Task: Create a directory /opt/project_data and assign ownership to user1 with the group project_team.
+•	Set the directory's permissions so that only group members can read/write but not execute the files.
+•	Verify permissions with ls -l.
+3. Process Management
+•	Task: Start a long-running process like top or tail -f /var/log/syslog.
+•	List all running processes for a user with ps.
+•	Kill the process you started earlier using kill by PID.
+4. Services
+•	Task: Check the status of the ssh service using systemctl.
+•	Restart the ssh service.
+•	Verify that the service is running by connecting to the system via SSH.
+5. Package Managers
+•	Task: Update the package list using your system’s package manager (apt, yum, etc.).
+•	Install a package of your choice (e.g., htop or curl).
+•	Verify the installation by running the installed program.
+6. Networking Commands
+•	Task: Use ip a or ifconfig to list the network interfaces and their IP addresses.
+•	Check connectivity to an external server using ping.
+•	Display the routing table using route or ip route.
+7. Linux Storage
+•	Task: Create a new partition using a loopback device (dd to create an image file).
+•	Format the partition with a filesystem like ext4.
+•	Mount the partition under /mnt/project_storage and verify it with df -h.
+8. Monitoring and Logging
+•	Task: Monitor system resource usage using top or free.
+•	Check logs for the SSH service using journalctl or by examining /var/log/syslog.
+•	Search for specific entries in the logs (e.g., errors) using grep.
+9. Job Scheduling
+•	Task: Schedule a one-time task to run uptime using at.
+•	Create a cron job for user1 to run df -h every hour and output the results to /tmp/disk_usage.log.
+•	Verify the cron job using crontab -l.
+10. Text Editors
+•	Task: Use vim to create a text file /tmp/project_notes.txt.
+•	Add content, save, and exit the file.
+•	Open and edit the same file using nano.
+
+
